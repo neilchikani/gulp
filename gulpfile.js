@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var less = require('gulp-less');
-// var del = require('del');
+var nodemon = require('gulp-nodemon');
 var useref = require('gulp-useref');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
@@ -17,6 +17,16 @@ gulp.task('sass', function(){
       stream: true
     }))
 });
+
+gulp.task('start-server', function () {
+  nodemon({
+    script: 'app.js'
+    , ext: 'js'
+    , env: { 'NODE_ENV': 'development' }
+  })
+});
+
+
 gulp.task('less', function(){
   return gulp.src('app/less/style.less')
   	// .pipe(notify("Start compiling the less files"))
