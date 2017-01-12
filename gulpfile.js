@@ -49,12 +49,12 @@ gulp.task('browserSync', function() {
   browserSync.init({
     server: {
       baseDir: 'app'
-    },
+    }
   })
 });
 
 gulp.task('default', ['browserSync','sass','less'], function (){
-	gulp.watch('app/less/**/*.less', ['less']); 
+  gulp.watch('app/less/**/*.less', ['less']); 
   gulp.watch('app/scss/**/*.scss', ['sass']); 
   gulp.watch('app/*.html', browserSync.reload); 
   gulp.watch('app/js/**/*.js', browserSync.reload);
